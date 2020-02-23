@@ -18,7 +18,7 @@ func transformHex(a int, Hex int) string {
 	result := ""
 	for ; a > 0; a /= Hex {
 		last := a % Hex
-		result = strconv.Itoa(last) + result
+		result = strconv.Itoa(last) + result //strconv.Itoa将"last"整形转换为字符串型
 	}
 	return result //返回计算后结果
 }
