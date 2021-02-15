@@ -46,7 +46,7 @@ var wg sync.WaitGroup
 
 func (a account) do(method, url string, body io.Reader) string {
 	req, _ := http.NewRequest(method, url, body)
-	a.client.Timeout = 3 * time.Second
+	a.client.Timeout = 10 * time.Second
 	req.Header.Set("User-Agent", "okhttp/3.3.0")
 	resp, err := a.client.Do(req)
 	if err != nil {
@@ -197,7 +197,6 @@ func (a *account) saveRecord(info info) {
 	http.PostForm(APIServer+"/?q=items/study/current/save", body)
 	//rbody, _ := ioutil.ReadAll(resp.Body)
 	//fmt.Println("Save responsed:", string(rbody))
-	cps[1].c <- 1
 }
 
 func (a *account) handleACourse(courseID string) {
